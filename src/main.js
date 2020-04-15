@@ -1,14 +1,16 @@
-import {createBoardTemplate} from "./components/board.js";
-import {createFilterTemplate} from "./components/filter.js";
-import {createLoadMoreButtonTemplate} from "./components/load-more-button.js";
-import {createTaskEditTemplate} from "./components/task-edit.js";
-import {createTaskTemplate} from "./components/task.js";
-import {createSiteMenuTemplate} from "./components/site-menu.js";
-import {createSortingTemplate} from "./components/sorting.js";
-import {generateFilters} from "./mock/filter.js";
-import {generateTasks} from "./mock/task.js";
+import {createBoardTemplate} from "src/components/board.js";
+import {createFilterTemplate} from "src/components/filter.js";
+import {createLoadMoreButtonTemplate} from "src/components/load-more-button.js";
+import {createTaskEditTemplate} from "src/components/task-edit.js";
+import {createTaskTemplate} from "src/components/task.js";
+import {createSiteMenuTemplate} from "src/components/site-menu.js";
+import {createSortingTemplate} from "src/components/sorting.js";
+import {generateFilters} from "src/mock/filter.js";
+import {generateTasks} from "src/mock/task.js";
 
 const TASK_COUNT = 22;
+const TASK_EDIT_LIMIT = 1;
+
 const SHOWING_TASKS_COUNT_ON_START = 8;
 const SHOWING_TASKS_COUNT_BY_BUTTON = 8;
 
@@ -34,7 +36,7 @@ render(taskListElement, createTaskEditTemplate(tasks[0]), `beforeend`);
 
 let showingTasksCount = SHOWING_TASKS_COUNT_ON_START;
 
-tasks.slice(1, showingTasksCount)
+tasks.slice(TASK_EDIT_LIMIT, showingTasksCount)
   .forEach((task) => render(taskListElement, createTaskTemplate(task), `beforeend`));
 
 render(boardElement, createLoadMoreButtonTemplate(), `beforeend`);
