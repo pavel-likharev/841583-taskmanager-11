@@ -1,6 +1,5 @@
-import {MONTH_NAMES} from "../const.js";
-import {formatTime} from "../utils/common.js";
 import AbstractComponent from 'src/components/abstract-component.js';
+import {formatTime, formatDate} from "src/utils/common.js";
 
 const createButtonMarkup = (name, isActive = true) => {
   return (
@@ -21,7 +20,7 @@ const createTaskTemplate = (task) => {
   const isDateShowing = !!dueDate;
   const isRepeatingTask = Object.values(repeatingDays).some(Boolean);
 
-  const date = isDateShowing ? `${dueDate.getDate()} ${MONTH_NAMES[dueDate.getMonth()]}` : ``;
+  const date = isDateShowing ? formatDate(dueDate) : ``;
   const time = isDateShowing ? formatTime(dueDate) : ``;
 
   const editButton = createButtonMarkup(`edit`);
