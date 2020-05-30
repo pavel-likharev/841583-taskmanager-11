@@ -51,7 +51,7 @@ export default class SiteMenu extends AbstractComponent {
   }
 
   setOnChange(handler) {
-    this.getElement().addEventListener(`chancge`, (evt) => {
+    this.getElement().addEventListener(`change`, (evt) => {
       if (evt.target.tagName !== `INPUT`) {
         return;
       }
